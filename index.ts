@@ -1,8 +1,8 @@
-import puppeteer, { ElementHandle } from 'puppeteer'
+import puppeteer from 'puppeteer'
 
 const browser = await puppeteer.launch({
   headless: false,
-  args: [`--window-size=1920,1080`],
+  args: ['--window-size=1920,1080'],
   defaultViewport: {
     width: 1920,
     height: 1080
@@ -20,7 +20,7 @@ const links = await page.evaluate(() =>
 
 console.log(links)
 
-const articleNumbers = {}
+const articleNumbers: Record<string, string> = {}
 
 for (const link of links) {
   await page.goto(link, {
@@ -30,7 +30,9 @@ for (const link of links) {
     () => document.querySelector('span[class="pip-product-identifier__value"]')?.textContent
   )
 
-  articleNumbers[link] = articleNumber
+  if (articleNumber !== null && articleNumber !== undefined) {
+    articleNumbers[link] = articleNumber
+  }
 }
 
 console.log(articleNumbers)

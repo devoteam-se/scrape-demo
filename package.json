@@ -6,14 +6,15 @@
   "type": "module",
   "scripts": {
     "start": "tsx watch index.ts",
-    "lint": "standard"
+    "lint": "ts-standard index.ts",
+    "typecheck": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "puppeteer": "^22.0.0",
-    "standard": "^17.1.0",
+    "ts-standard": "^12.0.2",
     "tsx": "^4.7.0",
-    "typescript": "^5.3.3"
+    "typescript": "5.1.*"
   }
 }
